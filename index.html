@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Siddhant Voice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="stage">
+    <header class="top">
+      <h1>Siddhant Voice</h1>
+      <button id="settingsBtn" class="ghost" aria-label="Open settings">Settings</button>
+    </header>
+
+    <section class="center">
+      <button id="orb" class="orb" data-state="idle" aria-label="Tap to talk">
+        <span class="ring r1"></span>
+        <span class="ring r2"></span>
+        <span class="core"></span>
+      </button>
+      <p id="status" class="status" aria-live="polite">Tap the orb and start talking</p>
+      <p id="live" class="live" aria-live="polite"></p>
+    </section>
+
+    <section id="log" class="log" aria-label="Conversation"></section>
+
+    <form id="textForm" class="composer" autocomplete="off">
+      <input id="textInput" type="text" placeholder="Or type a message" aria-label="Type a message" />
+      <button type="submit">Send</button>
+    </form>
+
+    <footer class="foot">Powered by Siddhant</footer>
+  </main>
+
+  <aside id="drawer" class="drawer" hidden>
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Settings</h2>
+        <button id="closeBtn" class="ghost">Close</button>
+      </div>
+
+      <label for="apiKey">Your assistant API key</label>
+      <input id="apiKey" type="password" placeholder="sid-..." />
+      <button id="saveKey">Save key</button>
+
+      <hr />
+
+      <h3>Generate a new API key</h3>
+      <label for="adminPw">Admin password (from backend/.env)</label>
+      <input id="adminPw" type="password" />
+      <label for="keyLabel">Name for this key</label>
+      <input id="keyLabel" type="text" placeholder="My laptop" />
+      <button id="genKey">Generate API key</button>
+      <p id="newKeyBox" class="keybox" hidden>
+        <span>Copy it now. It is shown only once.</span>
+        <code id="newKey"></code>
+      </p>
+
+      <hr />
+
+      <label for="lang">Language</label>
+      <select id="lang">
+        <option value="en-IN">English (India)</option>
+        <option value="en-US">English (US)</option>
+        <option value="hi-IN">Hindi</option>
+        <option value="mr-IN">Marathi</option>
+      </select>
+
+      <label class="check"><input id="autoListen" type="checkbox" checked /> Keep listening after each reply</label>
+    </div>
+  </aside>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
